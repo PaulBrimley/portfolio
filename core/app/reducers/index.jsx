@@ -1,11 +1,13 @@
 import { combineReducers } from "redux";
-import { reducer as formReducer } from "redux-form";
 
-import something from './testReducer';
+import data from './dataReducer';
+import projectComponent from './projectComponentReducer';
+import carouselComponent from './carouselComponentReducer';
 
 const rootReducer = combineReducers({
-	form: formReducer,
-	something: something
+	data: data,
+	projectComponent: projectComponent,
+	carouselComponent: carouselComponent
 });
 
 export default rootReducer;

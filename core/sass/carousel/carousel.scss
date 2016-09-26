@@ -1,0 +1,39 @@
+.carousel {
+  display: flex;
+  align-items: center;
+  height: 200px;
+  border: 1px solid purple;
+  overflow: hidden;
+}
+
+.carousel:hover .projectMedia {
+
+}
+
+.carouselContainer {
+  flex: 2;
+  margin-left: 5px;
+  overflow: hidden;
+}
+
+.projectMedia {
+  width: 100%;
+}
+
+.projectMediaContainer {
+  position: absolute;
+  perspective: 200px;
+}
+
+.projectSlide {
+  display: flex;
+  align-items: center;
+  background-size: cover;
+  transition: 1s;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.projectSlide img {
+  width: 100%;
+}

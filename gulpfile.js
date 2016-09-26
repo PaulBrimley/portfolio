@@ -3,6 +3,7 @@ var babel        = require('gulp-babel');
 var babelify     = require('babelify');
 var browserify   = require('browserify');
 var concat       = require('gulp-concat');
+var del          = require('del');
 var eslint       = require('gulp-eslint');
 var filter       = require('gulp-filter');
 var gulp         = require('gulp');
@@ -40,21 +41,14 @@ var jsFiles = {
   ]
 };
 
-/*gulp.task('concat', ['eslint'], function() {
-  return gulp.src(jsFiles.vendor.concat(jsFiles.source))
-    .pipe(sourcemaps.init())
-    .pipe(babel({
-      plugins: ['transform-react-jsx']
-    }))
-    .pipe(concat('bundle.js'))
-    .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest('public/assets/js'));
-});*/
-
-gulp.task('concatSass', function() {
+gulp.task('concatSass', ['clearSass'], function() {
   return gulp.src('core/sass/**/*.scss')
     .pipe(concat('index.scss'))
     .pipe(gulp.dest('core/sass'))
+});
+
+gulp.task('clearSass', function() {
+    return del(['core/sass/index.scss']);
 });
 
 // Lint JS/JSX files
