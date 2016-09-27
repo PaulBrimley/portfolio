@@ -27,8 +27,10 @@ class MainView extends Component {
     }
 
     componentWillReceiveProps(props) {
+        console.log(props);
         this.setState({
-            modalContent: props.modalContent
+            modalContent: props.modalContent,
+            data: props.data
         });
     }
 
@@ -36,11 +38,39 @@ class MainView extends Component {
         this.props.getData('/getProjects');
     }
 
+    checkForDataAndRender() {
+        if (this.state.data && this.state.data.length > 0) {
+            return (
+                <Measure onMeasure={(dimensions) => {this.props.setProjectDimensions(dimensions);}}>
+                    <div className="carouselContainer">
+                        {this.renderProjects()}
+                    </div>
+                </Measure>
+            );
+        } else {
+            return (
+                <div className="carouselContainer">
+                    No projects to display
+                </div>
+            );
+        }
+    }
+
     renderModalMedia() {
         if (this.state.modalContent.hasOwnProperty('content')) {
             return (
                 <div>
                     <img className="modalMedia" src={this.state.modalContent.content.mediaUrl} alt=""/>
+                </div>
+            );
+        }
+    }
+
+    renderModalMediaDescription() {
+        if (this.state.modalContent.hasOwnProperty('content')) {
+            return (
+                <div>
+                    {this.state.modalContent.content.mediaDescription}
                 </div>
             );
         }
@@ -63,8 +93,8 @@ class MainView extends Component {
     }
 
     renderProjects() {
-        let dataLength = this.props.data.length - 1;
-        return this.props.data.map(function (project, index) {
+        let dataLength = this.state.data.length - 1;
+        return this.state.data.map(function (project, index) {
             return (
                 <Carousel key={index} data={project} dataLength={dataLength} index={index}/>
             );
@@ -72,48 +102,48 @@ class MainView extends Component {
     }
 
     render() {
-        if (this.props.data && this.props.data.length > 0) {
-            return(
-                <div>
-                    <div className="headerContainerHolder">
-                        <div className="headerContainer" style={{width: this.state.width}}>
-                            <Header />
-                        </div>
-                    </div>
-                    <div className="mainContainerHolder">
-                        <div className="mainContainer" style={{width: this.state.width}}>
-                            <Modal show={this.state.modalContent.showModal} onHide={this.close}>
-                                <Modal.Header closeButton>
-                                    <Modal.Title>
-                                        {this.renderModalTitle()}
-                                    </Modal.Title>
-                                </Modal.Header>
-                                <Modal.Body>
-                                    {this.renderModalMedia()}
-                                </Modal.Body>
-                                <Modal.Footer>
-                                    <Button onClick={this.close}>Close</Button>
-                                </Modal.Footer>
-                            </Modal>
-                            <div className="profileInfo">
-                                <ProfileInfo />
-                            </div>
-                            <Measure onMeasure={(dimensions) => {this.props.setProjectDimensions(dimensions);}}>
-                                <div ref='projectContainer' className="carouselContainer">
-                                    {this.renderProjects()}
-                                </div>
-                            </Measure>
-                        </div>
+        return(
+            <div>
+                <div className="headerContainerHolder">
+                    <div className="headerContainer" style={{width: this.state.width}}>
+                        <Header />
                     </div>
                 </div>
-            );
+                <div className="mainContainerHolder">
+                    <div className="mainContainer" style={{width: this.state.width}}>
+                        <Modal show={this.state.modalContent.showModal} onHide={this.close}>
+                            <Modal.Header closeButton>
+                                <Modal.Title>
+                                    {this.renderModalTitle()}
+                                </Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>
+                                {this.renderModalMedia()}
+                                {this.renderModalMediaDescription()}
+                            </Modal.Body>
+                            <Modal.Footer>
+                                <Button onClick={this.close}>Close</Button>
+                            </Modal.Footer>
+                        </Modal>
+                        <div className="profileInfo">
+                            <ProfileInfo />
+                        </div>
+
+                        {this.checkForDataAndRender()}
+
+                    </div>
+                </div>
+            </div>
+        );
+        /*if (this.state.data && this.state.data.length > 0) {
+
         } else {
             return (
                 <div>
                     Nothing here
                 </div>
             );
-        }
+        }*/
     }
 }
 

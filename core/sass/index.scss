@@ -117,23 +117,6 @@ body {
   position: absolute;
   left: 6% !important;
 }
-.modal {
-  display: none;
-  position: absolute;
-  padding: 10px;
-  width: 90%;
-  z-index: 200;
-  opacity: 0;
-  transition: 1s;
-}
-
-.modalMedia {
-  width: 100%;
-}
-
-.modalMediaHolder {
-  margin-bottom: 10px;
-}
 .header {
   width: 100%;
   background-color: #fff;
@@ -150,6 +133,23 @@ body {
   height: 60px;
   display: flex;
   justify-content: center;
+  margin-bottom: 10px;
+}
+.modal {
+  display: none;
+  position: absolute;
+  padding: 10px;
+  width: 90%;
+  z-index: 200;
+  opacity: 0;
+  transition: 1s;
+}
+
+.modalMedia {
+  width: 100%;
+}
+
+.modalMediaHolder {
   margin-bottom: 10px;
 }
 .profileInfo {

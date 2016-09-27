@@ -43,6 +43,10 @@ class ManageProjects extends Component {
                             Media Title
                             <input type="text" name={'mediaTitle' + i} onChange={this.watchChange} required/>
                         </label>
+                        <label htmlFor="">
+                            Media Description
+                            <input type="text" name={'mediaDescription' + i} onChange={this.watchChange} required/>
+                        </label>
                     </div>
                 );
             }
