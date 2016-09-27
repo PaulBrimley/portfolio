@@ -5,6 +5,6 @@ module.exports = {
 		sessionSecret: '20eggnog14',
 		saveUninitialized: 'true',
 		resave: true
-	}
-
+	},
+	keyCode: 'mylab'
 };

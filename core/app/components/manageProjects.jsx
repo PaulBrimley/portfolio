@@ -45,7 +45,7 @@ class ManageProjects extends Component {
                         </label>
                         <label htmlFor="">
                             Media Description
-                            <input type="text" name={'mediaDescription' + i} onChange={this.watchChange} required/>
+                            <textarea type="text" name={'mediaDescription' + i} onChange={this.watchChange} required/>
                         </label>
                     </div>
                 );

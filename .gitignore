@@ -5,6 +5,7 @@ npm-debug.log
 bundle.js
 bundle.js.map
 .idea
+config.js
 
 *.DS_Store
 .AppleDouble

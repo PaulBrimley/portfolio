@@ -1,8 +1,8 @@
 .carousel {
   display: flex;
   align-items: center;
-  border: 1px solid purple;
   overflow: hidden;
+  background: #fff;
 }
 
 .carouselContainer {
@@ -41,9 +41,48 @@
   position: relative;
   bottom: 5px;
 }
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: #fff;
+  padding: 10px;
+}
+
+.headerContainer {
+  height: 100%;
+  display: flex;
+}
+
+.headerContainerHolder {
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.headerInfo {
+  display: flex;
+  justify-content: center;
+  font-size: 1em;
+}
+
+.headerInfoTitle {
+  display: flex;
+  justify-content: center;
+  font-size: 1.2em;
+  text-decoration: underline;
+}
+
+.headerTitle {
+  font-size: 1.5em;
+}
 html, body {
   padding: 0;
   margin: 0;
+  height: 100vh;
+  width: 100vw;
 }
 
 body {
@@ -90,6 +129,16 @@ body {
   justify-content: center;
 }
 
+.pageBody {
+  padding: 10px;
+  min-height: 100vh;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background 3s;
+}
+
 .rightArrow {
   display: flex;
   align-items: center;
@@ -109,31 +158,11 @@ body {
   cursor: pointer;
 }
 
-.mainContainer {
-  position: relative;
-}
+
 
 .modal {
   position: absolute;
   left: 6% !important;
-}
-.header {
-  width: 100%;
-  background-color: #fff;
-  padding: 10px;
-  z-index: 99999;
-}
-
-.headerContainer {
-  height: 100%;
-  display: flex;
-}
-
-.headerContainerHolder {
-  height: 60px;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 10px;
 }
 .modal {
   display: none;
@@ -153,21 +182,29 @@ body {
   margin-bottom: 10px;
 }
 .profileInfo {
+  position: relative;
   flex: 1;
+  display: flex;
+  flex-direction: column;
   min-height: 200px;
   max-height: 600px;
   background-color: #fff;
   padding: 10px;
   margin-right: 5px;
-  border: 1px solid purple;
+
 }
 
 .profileInfoBody {
-
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 5px;
 }
 
 .profileInfoHeader {
   display: flex;
   justify-content: center;
   font-size: 1.2em;
+  text-decoration: underline;
+  margin-bottom: 5px;
 }

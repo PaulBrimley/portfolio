@@ -22,7 +22,6 @@ class ProjectMedia extends Component {
     }
 
     componentWillReceiveProps(props) {
-        console.log(props);
         if (props.moveProjectMediaState.hasOwnProperty('direction')) {
             if (props.moveProjectMediaState.projectId === this.props.projectId && props.moveProjectMediaState.direction === 'left') {
                 let position = (this.state.currentPosition - 1) < 0 ? (props.projectMediaArrayLength - 1) : (this.state.currentPosition - 1);

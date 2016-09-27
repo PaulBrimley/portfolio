@@ -14,12 +14,16 @@ class MainView extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            backgrounds: ['url("./assets/images/001.jpg")', 'url("./assets/images/002.jpg")', 'url("./assets/images/003.jpg")', 'url("./assets/images/004.jpg")', 'url("./assets/images/005.jpg")', 'url("./assets/images/006.jpg")'],
+            background: 'url("./assets/images/001.jpg")',
+            backgroundIndex: 0,
             counter: 0,
             modalContent: {},
             width: '90%',
             projectDimensions: {}
         };
         this.close = this.close.bind(this);
+        this.setBackgroundState = this.setBackgroundState.bind(this);
     }
 
     close() {
@@ -27,7 +31,6 @@ class MainView extends Component {
     }
 
     componentWillReceiveProps(props) {
-        console.log(props);
         this.setState({
             modalContent: props.modalContent,
             data: props.data
@@ -35,7 +38,9 @@ class MainView extends Component {
     }
 
     componentWillMount() {
+        this.forceUpdate();
         this.props.getData('/getProjects');
+        this.renderBackground();
     }
 
     checkForDataAndRender() {
@@ -53,6 +58,30 @@ class MainView extends Component {
                     No projects to display
                 </div>
             );
+        }
+    }
+
+    renderBackground() {
+        let setBackgroundState = this.setBackgroundState;
+        setInterval(function () {
+            setBackgroundState();
+        }, 20000);
+    }
+
+    setBackgroundState() {
+        let index = this.state.backgroundIndex;
+        if (index >= this.state.backgrounds.length - 1) {
+            index = 0;
+            this.setState({
+                background: this.state.backgrounds[index],
+                backgroundIndex: index
+            });
+        } else {
+            index++;
+            this.setState({
+                background: this.state.backgrounds[index],
+                backgroundIndex: index
+            });
         }
     }
 
@@ -103,7 +132,7 @@ class MainView extends Component {
 
     render() {
         return(
-            <div>
+            <div className="pageBody" style={{backgroundImage: this.state.background}}>
                 <div className="headerContainerHolder">
                     <div className="headerContainer" style={{width: this.state.width}}>
                         <Header />
@@ -125,9 +154,8 @@ class MainView extends Component {
                                 <Button onClick={this.close}>Close</Button>
                             </Modal.Footer>
                         </Modal>
-                        <div className="profileInfo">
-                            <ProfileInfo />
-                        </div>
+
+                        <ProfileInfo />
 
                         {this.checkForDataAndRender()}
 
@@ -135,15 +163,6 @@ class MainView extends Component {
                 </div>
             </div>
         );
-        /*if (this.state.data && this.state.data.length > 0) {
-
-        } else {
-            return (
-                <div>
-                    Nothing here
-                </div>
-            );
-        }*/
     }
 }
 

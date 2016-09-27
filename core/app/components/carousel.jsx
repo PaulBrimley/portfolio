@@ -76,13 +76,25 @@ class Carousel extends Component {
     render() {
         return(
             <div className="carousel" style={{height: this.state.carouselHeight, marginBottom: this.setCarouselMarginBottom()}}>
-                <div className="leftArrow" style={{height: this.state.carouselHeight}}>
-                    <i className="fa fa-angle-left fa-3x" aria-hidden="true" onClick={this.leftArrowClicked}/>
-                </div>
+                {() => {
+                    if (this.props.data.media && this.props.data.media.length > 1) {
+                        return (
+                            <div className="leftArrow" style={{height: this.state.carouselHeight}}>
+                                <i className="fa fa-angle-left fa-3x" aria-hidden="true" onClick={this.leftArrowClicked}/>
+                            </div>
+                        );
+                    }
+                }}
                 {this.renderProjectMedia()}
-                <div className="rightArrow" style={{height: this.state.carouselHeight}}>
-                    <i className="fa fa-angle-right fa-3x" aria-hidden="true" onClick={this.rightArrowClicked}/>
-                </div>
+                {() => {
+                    if (this.props.data.media && this.props.data.media.length > 1) {
+                        return (
+                            <div className="rightArrow" style={{height: this.state.carouselHeight}}>
+                                <i className="fa fa-angle-right fa-3x" aria-hidden="true" onClick={this.rightArrowClicked}/>
+                            </div>
+                        );
+                    }
+                }}
             </div>
         );
     }
