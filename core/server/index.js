@@ -1,11 +1,14 @@
 var express = require('express'),
-		config = require('./config.js'),
-	  cors = require('cors'),
-	  bodyParser = require('body-parser'),
-	  mongoose = require('mongoose'),
-	  session = require('express-session'),
-	  passport = require('passport'),
-	  local = require('passport-local');
+	config = require('./config.js'),
+	cors = require('cors'),
+	bodyParser = require('body-parser'),
+	mongoose = require('mongoose'),
+	session = require('express-session'),
+	passport = require('passport'),
+	path = require("path");
+	local = require('passport-local');
+
+var	projectCtrl = require('./controllers/projectController');
 
 var app = express();
 var server = require("http").Server(app);
@@ -37,11 +40,11 @@ var proj1 = [
 		imageTitle: 'Four'
 	},
 	{
-		imageUrl: 'http://hdwallpaperbackgrounds.net/wp-content/uploads/2016/07/Cool-Nature-Pictures-1.jpg',
+		imageUrl: 'http://www.spyderonlines.com/images/wallpapers/cool-hd-nature-wallpapers/cool-hd-nature-wallpapers-2.jpg',
 		imageTitle: 'Five'
 	},
 	{
-		imageUrl: 'http://hdwallpaperbackgrounds.net/wp-content/uploads/2016/07/Cool-Nature-Pictures-1.jpg',
+		imageUrl: 'http://media.148apps.com/screenshots/918109487/us-ipad-2-awesome-cool-nature-hd-wallpapers-get-best-natural-pictures-and-beautiful-world-of-natural-greenery.jpeg',
 		imageTitle: 'Six'
 	},
 	{
@@ -128,12 +131,15 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-app.get('/getTempData', function(req, res) {
-	// res.send({proj1: proj1, proj2: proj2, proj3: proj3});
-	res.send([{title: 'Project 1', data: proj1}, {title: 'Project 2', data: proj2}, {title: 'Project 3', data: proj3}]);
+app.post('/addProject', projectCtrl.addProject, projectCtrl.getProjects);
+app.get('/getProjects', projectCtrl.getProjects);
+
+app.get(/^(?!.*(images))/, function (req, res) {
+	res.sendFile(path.resolve(__dirname + './../../public/index.html'));
 });
 
 var mongoUri = config.mongoUri;
+mongoose.Promise = global.Promise;
 mongoose.connect(mongoUri);
 mongoose.connection.once('open', function () {
     console.log('Connected to MongoDB');

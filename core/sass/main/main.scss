@@ -14,6 +14,29 @@ body {
   box-shadow: 3px 3px 3px 2px #888;
 }
 
+.cursorPointer {
+  cursor: pointer;
+}
+
+.leftArrow {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 2px;
+  position: absolute;
+  left: 0;
+  width: 20px;
+  z-index: 101;
+}
+
+.leftArrow:hover i {
+  color: #ddd;
+}
+
+.leftArrow i {
+  cursor: pointer;
+}
+
 .mainContainer {
   height: 100%;
   display: flex;
@@ -22,4 +45,32 @@ body {
 .mainContainerHolder {
   display: flex;
   justify-content: center;
+}
+
+.rightArrow {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 2px;
+  position: absolute;
+  right: 0;
+  width: 20px;
+  z-index: 101;
+}
+
+.rightArrow:hover i {
+  color: #ddd;
+}
+
+.rightArrow i {
+  cursor: pointer;
+}
+
+.mainContainer {
+  position: relative;
+}
+
+.modal {
+  position: absolute;
+  left: 6% !important;
 }

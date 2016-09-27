@@ -1,13 +1,8 @@
 .carousel {
   display: flex;
   align-items: center;
-  height: 200px;
   border: 1px solid purple;
   overflow: hidden;
-}
-
-.carousel:hover .projectMedia {
-
 }
 
 .carouselContainer {
@@ -22,45 +17,123 @@
 
 .projectMediaContainer {
   position: absolute;
+  transition: 1s;
   perspective: 200px;
 }
 
 .projectSlide {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
+  justify-content: center;
   background-size: cover;
+  background-position: center;
   transition: 1s;
-  height: 100%;
+  //height: 150px;
   transform-style: preserve-3d;
 }
 
-.projectSlide img {
+.projectSlide:hover .viewButton {
+  opacity: 1;
+}
+
+.viewButton {
+  opacity: 0;
+  position: relative;
+  bottom: 5px;
+}
+html, body {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  //background-image: url('../images/circuitBoard.jpg');
+  //background-attachment: fixed;
+  //background-size: cover;
+  font-family: "Arial Black", Gadget, sans-serif;
+}
+
+.boxShadow {
+  box-shadow: 3px 3px 3px 2px #888;
+}
+
+.cursorPointer {
+  cursor: pointer;
+}
+
+.leftArrow {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 2px;
+  position: absolute;
+  left: 0;
+  width: 20px;
+  z-index: 101;
+}
+
+.leftArrow:hover i {
+  color: #ddd;
+}
+
+.leftArrow i {
+  cursor: pointer;
+}
+
+.mainContainer {
+  height: 100%;
+  display: flex;
+}
+
+.mainContainerHolder {
+  display: flex;
+  justify-content: center;
+}
+
+.rightArrow {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 2px;
+  position: absolute;
+  right: 0;
+  width: 20px;
+  z-index: 101;
+}
+
+.rightArrow:hover i {
+  color: #ddd;
+}
+
+.rightArrow i {
+  cursor: pointer;
+}
+
+.mainContainer {
+  position: relative;
+}
+
+.modal {
+  position: absolute;
+  left: 6% !important;
+}
+.modal {
+  display: none;
+  position: absolute;
+  padding: 10px;
+  width: 90%;
+  z-index: 200;
+  opacity: 0;
+  transition: 1s;
+}
+
+.modalMedia {
   width: 100%;
 }
 
-.coverflow__container__1P-xE {
-  background-color: transparent !important;
+.modalMediaHolder {
+  margin-bottom: 10px;
 }
-
-.coverflow__actions__1D5QO {
-  bottom: 0px !important;
-}
-
-.coverFlowContainer {
-  flex: 2;
-  margin-left: 5px;
-}
-
-.coverflowTitle {
-  display: flex;
-  justify-content: center;
-  font-size: 1.2em;
-}
-
-//.project {
-//  padding: 10px;
-//  background-color: #fff;
-//}
 .header {
   width: 100%;
   background-color: #fff;
@@ -81,6 +154,8 @@
 }
 .profileInfo {
   flex: 1;
+  min-height: 200px;
+  max-height: 600px;
   background-color: #fff;
   padding: 10px;
   margin-right: 5px;
@@ -95,29 +170,4 @@
   display: flex;
   justify-content: center;
   font-size: 1.2em;
-}
-html, body {
-  padding: 0;
-  margin: 0;
-}
-
-body {
-  //background-image: url('../images/circuitBoard.jpg');
-  //background-attachment: fixed;
-  //background-size: cover;
-  font-family: "Arial Black", Gadget, sans-serif;
-}
-
-.boxShadow {
-  box-shadow: 3px 3px 3px 2px #888;
-}
-
-.mainContainer {
-  height: 100%;
-  display: flex;
-}
-
-.mainContainerHolder {
-  display: flex;
-  justify-content: center;
 }
