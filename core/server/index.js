@@ -30,6 +30,14 @@ app.use(passport.session());
 
 app.post('/addProject', projectCtrl.addProject, projectCtrl.getProjects);
 app.get('/getProjects', projectCtrl.getProjects);
+app.post('/testName', function (req, res) {
+	console.log(req.body);
+	if (req.body.name === config.keyCode) {
+		return res.send(true);
+	} else {
+		return res.send(false);
+	}
+});
 
 app.get(/^(?!.*(images))/, function (req, res) {
 	res.sendFile(path.resolve(__dirname + './../../public/index.html'));

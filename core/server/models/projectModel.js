@@ -7,7 +7,8 @@ var projectModel = new mongoose.Schema({
     media: [{
         mediaDescription: {type: 'String'},
         mediaTitle: {type: 'String'},
-        mediaUrl: {type: 'String'}
+        mediaUrl: {type: 'String'},
+        mediaVideoLink: {type: 'String'}
     }]
 });
 

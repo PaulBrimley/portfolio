@@ -7,8 +7,11 @@ class ProfileInfo extends Component {
         return(
             <div className="profileInfo">
                 <div className="profileInfoHeader">
-                    <div className="profileInfoHeaderInside">
+                    <div>
                         Profile Information
+                    </div>
+                    <div className="profileInfoImage">
+                        <img src="./assets/images/profilePic.jpg" alt=""/>
                     </div>
                 </div>
                 <div className="profileInfoBody">

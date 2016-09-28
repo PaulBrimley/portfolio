@@ -48,6 +48,9 @@ class MainView extends Component {
             return (
                 <Measure onMeasure={(dimensions) => {this.props.setProjectDimensions(dimensions);}}>
                     <div className="carouselContainer">
+                        <div className="carouselHeader">
+                            Projects
+                        </div>
                         {this.renderProjects()}
                     </div>
                 </Measure>

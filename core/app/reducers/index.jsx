@@ -6,6 +6,7 @@ import carouselComponent from './carouselComponentReducer';
 import manageProjects from './manageProjectsReducer';
 import moveProjectMedia from './moveProjectMediaReducer';
 import modalContent from './modalReducer';
+import nameTest from './nameTestReducer';
 
 const rootReducer = combineReducers({
 	data: data,
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
 	carouselComponent: carouselComponent,
 	manageProjects: manageProjects,
 	moveProjectMedia: moveProjectMedia,
-	modalContent: modalContent
+	modalContent: modalContent,
+	nameTest: nameTest
 });
 
 export default rootReducer;

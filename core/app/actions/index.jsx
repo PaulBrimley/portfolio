@@ -10,6 +10,8 @@ export const ADD_PROJECT = 'ADD_PROJECT';
 
 export const SET_MODAL_CONTENT = 'SET_MODAL_CONTENT';
 
+export const NAME_TEST = 'NAME_TEST';
+
 const ROOT_URL = window.location.origin;
 
 export function addMediaAdds(quantity) {
@@ -42,6 +44,15 @@ export function moveProjectMedia(projectId, direction) {
 	return {
 		type: MOVE_PROJECT_MEDIA,
 		payload: {projectId, direction}
+	};
+}
+
+export function nameTester(name) {
+	const nameTest = axios.post(`${ROOT_URL}/testName`, {name});
+
+	return {
+		type: NAME_TEST,
+		payload: nameTest
 	};
 }
 

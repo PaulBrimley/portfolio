@@ -15,13 +15,32 @@
   flex: 1;
   min-height: 0;
   overflow-y: auto;
-  padding: 5px;
+  padding: 0 5px 5px;
 }
 
 .profileInfoHeader {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
   font-size: 1.2em;
   text-decoration: underline;
   margin-bottom: 5px;
+}
+
+.profileInfoImage {
+  margin: 5px 0;
+  width: 40%;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profileInfoImage img {
+  width: 100%;
+}
+
+@media only screen and (max-width: 900px) {
+  .profileInfo {
+    margin: 0 0 10px;
+  }
 }

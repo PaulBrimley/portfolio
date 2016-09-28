@@ -1,12 +1,38 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Link, browserHistory } from "react-router";
+import { nameTester } from '../actions/index';
+
 let name = 'Paul Brimley';
+let nameTest = '';
 class Header extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: name.split('')
+            name: name.split(''),
+            nameTest: false
         };
+        this.watchLetter = this.watchLetter.bind(this);
+    }
+
+    componentWillReceiveProps(props) {
+        this.setState({
+            nameTest: props.nameChecker
+        });
+    }
+
+    renderLink() {
+        if (this.state.nameTest) {
+            return (
+                <div>
+                    <Link to="manage">Link</Link>
+                </div>
+            );
+        } else {
+            return (
+                <div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+            );
+        }
     }
 
     renderName() {
@@ -19,7 +45,16 @@ class Header extends Component {
     }
 
     watchLetter(letter) {
-        console.log(letter);
+        nameTest += letter.toLowerCase();
+        if (nameTest.indexOf('yyyy') > -1) {
+            console.log('clearing');
+            nameTest = '';
+        }
+
+        if (nameTest.length) {
+            console.log('sending', nameTest);
+            this.props.nameTester(nameTest);
+        }
     }
 
     render() {
@@ -32,10 +67,17 @@ class Header extends Component {
                     <div className="headerInfoTitle">Developer:</div>
                     <div className="headerInfo">Angular - React - Node - Express - Mongo</div>
                 </div>
-                <Link to="manage">Link</Link>
+                {this.renderLink()}
+
             </div>
         );
     }
 }
 
-export default Header;
+function mapStateToProps(state) {
+    return {
+        nameChecker: state.nameTest
+    };
+}
+
+export default connect(mapStateToProps, { nameTester })(Header);

@@ -78,9 +78,13 @@ body {
   cursor: pointer;
 }
 
-
-
 .modal {
   position: absolute;
   left: 6% !important;
+}
+
+@media only screen and (max-width: 900px) {
+  .mainContainer {
+    flex-direction: column;
+  }
 }

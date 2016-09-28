@@ -14,7 +14,8 @@ module.exports = {
                 mediaArray.push({
                     mediaDescription: req.body['mediaDescription' + parsedIndex],
                     mediaTitle: req.body[prop],
-                    mediaUrl: req.body['mediaUrl' + parsedIndex]
+                    mediaUrl: req.body['mediaUrl' + parsedIndex],
+                    mediaVideoLink: req.body['mediaVideoLink' + parsedIndex]
                 })
             }
         }
