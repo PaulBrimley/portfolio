@@ -55,8 +55,6 @@ class ProjectMedia extends Component {
     }
 
     setModalContent() {
-        console.log(this.props.dataSet);
-
         this.props.setModalContent(true, this.props.dataSet);
     }
 

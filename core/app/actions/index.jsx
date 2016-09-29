@@ -64,7 +64,6 @@ export function setCarouselHeight(projectId, dimensions) {
 }
 
 export function setModalContent(showModal, content) {
-	console.log(content);
 	return {
 		type: SET_MODAL_CONTENT,
 		payload: {showModal, content}

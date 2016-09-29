@@ -64,6 +64,14 @@
   opacity: 1;
 }
 
+.projectTitle {
+  text-align: center;
+  text-decoration: underline;
+  font-size: 1.4em;
+  padding: 5px 0;
+  background: rgba(255, 255, 255, 0.7);
+}
+
 .rightArrow {
   display: flex;
   align-items: center;

@@ -58,7 +58,9 @@ class MainView extends Component {
         } else {
             return (
                 <div className="carouselContainer">
-                    No projects to display
+                    <div className="carouselHeader">
+                        No projects to display
+                    </div>
                 </div>
             );
         }
