@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   overflow: hidden;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.7);
 }
 
 .carouselContainer {
@@ -19,6 +19,25 @@
   margin-bottom: 10px;
   background: #fff;
   padding: 10px;
+}
+
+.leftArrow {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 2px;
+  position: absolute;
+  left: 0;
+  width: 20px;
+  z-index: 99999;
+}
+
+.leftArrow:hover i {
+  color: #ddd;
+}
+
+.leftArrow i {
+  cursor: pointer;
 }
 
 .projectMedia {
@@ -44,6 +63,25 @@
 
 .projectSlide:hover .viewButton {
   opacity: 1;
+}
+
+.rightArrow {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 2px;
+  position: absolute;
+  right: 0;
+  width: 20px;
+  z-index: 99999;
+}
+
+.rightArrow:hover i {
+  color: #ddd;
+}
+
+.rightArrow i {
+  cursor: pointer;
 }
 
 .viewButton {

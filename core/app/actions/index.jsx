@@ -23,7 +23,6 @@ export function addMediaAdds(quantity) {
 }
 
 export function addProject(project) {
-	console.log(project);
 	const projectSend = axios.post(`${ROOT_URL}/addProject`, project);
 
 	return {

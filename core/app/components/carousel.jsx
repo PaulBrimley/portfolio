@@ -13,6 +13,8 @@ class Carousel extends Component {
         this.renderProjectMedia = this.renderProjectMedia.bind(this);
         this.leftArrowClicked = this.leftArrowClicked.bind(this);
         this.rightArrowClicked = this.rightArrowClicked.bind(this);
+        this.renderLeftArrow = this.renderLeftArrow.bind(this);
+        this.renderRightArrow = this.renderRightArrow.bind(this);
     }
 
     componentWillReceiveProps(props) {
@@ -28,6 +30,27 @@ class Carousel extends Component {
 
     leftArrowClicked() {
         this.props.moveProjectMedia(this.props.data._id, 'left');
+    }
+
+    renderLeftArrow() {
+        if (this.props.data.media && this.props.data.media.length > 1) {
+            return (
+                <div className="leftArrow" style={{height: this.state.carouselHeight}}>
+                    <i className="fa fa-angle-left fa-3x" aria-hidden="true" onClick={this.leftArrowClicked}/>
+                </div>
+            );
+        }
+
+    }
+
+    renderRightArrow() {
+        if (this.props.data.media && this.props.data.media.length > 1) {
+            return (
+                <div className="rightArrow" style={{height: this.state.carouselHeight}}>
+                    <i className="fa fa-angle-right fa-3x" aria-hidden="true" onClick={this.rightArrowClicked}/>
+                </div>
+            );
+        }
     }
 
     renderProjectMedia() {
@@ -76,25 +99,9 @@ class Carousel extends Component {
     render() {
         return(
             <div className="carousel" style={{height: this.state.carouselHeight, marginBottom: this.setCarouselMarginBottom()}}>
-                {() => {
-                    if (this.props.data.media && this.props.data.media.length > 1) {
-                        return (
-                            <div className="leftArrow" style={{height: this.state.carouselHeight}}>
-                                <i className="fa fa-angle-left fa-3x" aria-hidden="true" onClick={this.leftArrowClicked}/>
-                            </div>
-                        );
-                    }
-                }}
+                {this.renderLeftArrow()}
                 {this.renderProjectMedia()}
-                {() => {
-                    if (this.props.data.media && this.props.data.media.length > 1) {
-                        return (
-                            <div className="rightArrow" style={{height: this.state.carouselHeight}}>
-                                <i className="fa fa-angle-right fa-3x" aria-hidden="true" onClick={this.rightArrowClicked}/>
-                            </div>
-                        );
-                    }
-                }}
+                {this.renderRightArrow()}
             </div>
         );
     }

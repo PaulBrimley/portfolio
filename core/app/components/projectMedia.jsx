@@ -76,7 +76,7 @@ class ProjectMedia extends Component {
                 buttonDisplay: 'none',
                 centerPosition: centerPosition,
                 currentPosition: currentPosition,
-                rotation: 'rotate3d(0, 1, 0, ' + this.state.animateTo + 'deg) scale(.5, .5)',
+                rotation: 'rotate3d(0, 1, 0, ' + this.state.animateTo + 'deg) scale(.75, .75)',
                 position: (((projectWidth / 2) - (slideWidth / 2)) - ((slideWidth - 100) * (centerPosition - currentPosition))) + 'px',
                 zIndex: (100 - (centerPosition - currentPosition))
             });
@@ -85,7 +85,7 @@ class ProjectMedia extends Component {
                 buttonDisplay: 'none',
                 centerPosition: centerPosition,
                 currentPosition: currentPosition,
-                rotation: 'rotate3d(0, 1, 0, ' + (-1 * this.state.animateTo) + 'deg) scale(.5, .5)',
+                rotation: 'rotate3d(0, 1, 0, ' + (-1 * this.state.animateTo) + 'deg) scale(.75, .75)',
                 position: (((projectWidth / 2) - (slideWidth / 2)) + ((slideWidth - 100) * (currentPosition - centerPosition))) + 'px',
                 zIndex: (100 - (currentPosition - centerPosition))
             });

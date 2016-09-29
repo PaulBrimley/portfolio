@@ -60,8 +60,6 @@ class ManageProjects extends Component {
 
     submitProject(event) {
         event.preventDefault();
-        console.log(this.state.formFields);
-
         this.props.addProject(this.state.formFields);
 
     }
@@ -99,7 +97,7 @@ class ManageProjects extends Component {
                     <div>
                         <label htmlFor="">
                             Url
-                            <input type="text" onChange={this.watchChange} name="url" required/>
+                            <input type="text" onChange={this.watchChange} name="url" />
                         </label>
                     </div>
                     <div>Add Media <i className="fa fa-plus-square-o cursorPointer" aria-hidden="true" onClick={this.addMediaAdds}/></div>

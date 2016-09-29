@@ -20,24 +20,6 @@ body {
   cursor: pointer;
 }
 
-.leftArrow {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding-left: 2px;
-  position: absolute;
-  left: 0;
-  width: 20px;
-  z-index: 101;
-}
-
-.leftArrow:hover i {
-  color: #ddd;
-}
-
-.leftArrow i {
-  cursor: pointer;
-}
 
 .mainContainer {
   height: 100%;
@@ -57,25 +39,6 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   transition: background 3s;
-}
-
-.rightArrow {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding-right: 2px;
-  position: absolute;
-  right: 0;
-  width: 20px;
-  z-index: 101;
-}
-
-.rightArrow:hover i {
-  color: #ddd;
-}
-
-.rightArrow i {
-  cursor: pointer;
 }
 
 .modal {
