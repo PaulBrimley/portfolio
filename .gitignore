@@ -6,6 +6,9 @@ bundle.js
 bundle.js.map
 .idea
 config.js
+index.scss
+index.css
+index.css.map
 
 *.DS_Store
 .AppleDouble
