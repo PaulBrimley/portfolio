@@ -40,7 +40,7 @@ class MainView extends Component {
     componentWillMount() {
         this.forceUpdate();
         this.props.getData('/getProjects');
-        this.renderBackground();
+        this.setBackgroundState();
     }
 
     checkForDataAndRender() {
@@ -72,20 +72,10 @@ class MainView extends Component {
     }
 
     setBackgroundState() {
-        let index = this.state.backgroundIndex;
-        if (index >= this.state.backgrounds.length - 1) {
-            index = 0;
-            this.setState({
-                background: this.state.backgrounds[index],
-                backgroundIndex: index
-            });
-        } else {
-            index++;
-            this.setState({
-                background: this.state.backgrounds[index],
-                backgroundIndex: index
-            });
-        }
+        let index = Math.floor(Math.random() * (this.state.backgrounds.length - 1));
+        this.setState({
+            background: this.state.backgrounds[index]
+        });
     }
 
     renderModalMedia() {
