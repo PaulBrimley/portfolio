@@ -1,2 +1,2 @@
 # portfolio
-paulBrimleywebdev.com
+www.paulbrimleywebdev.com
