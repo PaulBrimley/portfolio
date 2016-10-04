@@ -21,10 +21,6 @@ class Header extends Component {
         });
     }
 
-    componentWillMount() {
-        this.props.nameTester('mylab');
-    }
-
     renderLink() {
         if (this.state.nameTest) {
             return (
