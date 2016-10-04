@@ -75,7 +75,7 @@ class ProjectMedia extends Component {
             });
         } else if (currentPosition < centerPosition) {
             this.setState({
-                animation: infinite ? 'end_to_end 500ms 1' : 'normal 500ms 1',
+                animation: infinite ? 'end_to_end 750ms 1' : 'normal 750ms 1',
                 buttonDisplay: 'none',
                 centerPosition: centerPosition,
                 currentPosition: currentPosition,
@@ -85,7 +85,7 @@ class ProjectMedia extends Component {
             });
         } else if (currentPosition > centerPosition) {
             this.setState({
-                animation: infinite ? 'end_to_end 500ms 1' : 'normal 500ms 1',
+                animation: infinite ? 'end_to_end 750ms 1' : 'normal 750ms 1',
                 buttonDisplay: 'none',
                 centerPosition: centerPosition,
                 currentPosition: currentPosition,
