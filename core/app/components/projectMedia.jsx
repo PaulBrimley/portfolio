@@ -75,7 +75,7 @@ class ProjectMedia extends Component {
                 centerPosition: centerPosition,
                 currentPosition: currentPosition,
                 rotation: 'rotate3d(0, 1, 0, ' + this.state.animateTo + 'deg) scale(.75, .75)',
-                position: (((projectWidth / 2) - (slideWidth / 2)) - ((slideWidth - 100) * (centerPosition - currentPosition))) + 'px',
+                position: (((projectWidth / 2) - (slideWidth / 2)) - ((slideWidth - 30) * (centerPosition - currentPosition))) + 'px',
                 zIndex: (100 - (centerPosition - currentPosition))
             });
         } else if (currentPosition > centerPosition) {
@@ -84,7 +84,7 @@ class ProjectMedia extends Component {
                 centerPosition: centerPosition,
                 currentPosition: currentPosition,
                 rotation: 'rotate3d(0, 1, 0, ' + (-1 * this.state.animateTo) + 'deg) scale(.75, .75)',
-                position: (((projectWidth / 2) - (slideWidth / 2)) + ((slideWidth - 100) * (currentPosition - centerPosition))) + 'px',
+                position: (((projectWidth / 2) - (slideWidth / 2)) + ((slideWidth - 30) * (currentPosition - centerPosition))) + 'px',
                 zIndex: (100 - (currentPosition - centerPosition))
             });
         }

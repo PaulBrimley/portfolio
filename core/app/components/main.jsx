@@ -136,7 +136,8 @@ class MainView extends Component {
 
     render() {
         return(
-            <div className="pageBody" style={{backgroundImage: this.state.background, flexDirection: (this.state.mobileVersion ? 'column' : 'row')}}>
+            <div className="pageBody" style={{flexDirection: (this.state.mobileVersion ? 'column' : 'row')}}>
+                <div className="pageBodyBackground" style={{backgroundImage: this.state.background}}></div>
                 <div className="headerContainerHolder">
                     <div className="headerContainer" style={{width: this.state.width}}>
                         <Header />

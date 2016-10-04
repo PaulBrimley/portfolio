@@ -1,3 +1,6 @@
+$background-blur: 5px;
+$background-brightness: 1.1;
+
 html, body {
   padding: 0;
   margin: 0;
@@ -29,13 +32,29 @@ body {
 }
 
 .pageBody {
+  position: relative;
   padding: 10px;
   min-height: 100vh;
   width: 100%;
+  transition: background 3s;
+}
+
+.pageBodyBackground {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(255,255,255,0.5);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  transition: background 3s;
+  -webkit-filter: blur($background-blur) brightness($background-brightness);
+  -moz-filter: blur($background-blur) brightness($background-brightness);
+  -o-filter: blur($background-blur) brightness($background-brightness);
+  -ms-filter: blur($background-blur) brightness($background-brightness);
+  filter: blur($background-blur) brightness($background-brightness);
+  z-index: -1;
 }
 
 .modal {
