@@ -9,6 +9,7 @@ class ProjectMedia extends Component {
         super(props);
         this.state = {
             animateTo: 20,
+            animation: 'normal',
             buttonDisplay: 'none',
             dimensions: {},
             rotation: 0,
@@ -24,11 +25,13 @@ class ProjectMedia extends Component {
     componentWillReceiveProps(props) {
         if (props.moveProjectMediaState.hasOwnProperty('direction')) {
             if (props.moveProjectMediaState.projectId === this.props.projectId && props.moveProjectMediaState.direction === 'left') {
+                let infinite = (this.state.currentPosition - 1) < 0 ? true : false;
                 let position = (this.state.currentPosition - 1) < 0 ? (props.projectMediaArrayLength - 1) : (this.state.currentPosition - 1);
-                this.setRotationAndPosition(position, this.state.centerPosition, props.projectDimensions.width, props.slideWidth,  1);
+                this.setRotationAndPosition(position, this.state.centerPosition, props.projectDimensions.width, props.slideWidth, infinite);
             } else if (props.moveProjectMediaState.projectId === this.props.projectId && props.moveProjectMediaState.direction === 'right') {
+                let infinite = (this.state.currentPosition + 1) > (props.projectMediaArrayLength - 1) ? true : false;
                 let position = (this.state.currentPosition + 1) > (props.projectMediaArrayLength - 1) ? 0 : (this.state.currentPosition + 1);
-                this.setRotationAndPosition(position, this.state.centerPosition, props.projectDimensions.width, props.slideWidth, 1);
+                this.setRotationAndPosition(position, this.state.centerPosition, props.projectDimensions.width, props.slideWidth, infinite);
             }
         } else {
             this.setRotationAndPosition(props.index, props.centerPosition, props.projectDimensions.width, props.slideWidth);
@@ -58,9 +61,10 @@ class ProjectMedia extends Component {
         this.props.setModalContent(true, this.props.dataSet);
     }
 
-    setRotationAndPosition(currentPosition, centerPosition, projectWidth, slideWidth, afterInitial) {
+    setRotationAndPosition(currentPosition, centerPosition, projectWidth, slideWidth, infinite) {
         if (currentPosition === centerPosition) {
             this.setState({
+                animation: 'normal 1s 1',
                 buttonDisplay: 'block',
                 centerPosition: centerPosition,
                 currentPosition: currentPosition,
@@ -71,6 +75,7 @@ class ProjectMedia extends Component {
             });
         } else if (currentPosition < centerPosition) {
             this.setState({
+                animation: infinite ? 'end_to_end 500ms 1' : 'normal 500ms 1',
                 buttonDisplay: 'none',
                 centerPosition: centerPosition,
                 currentPosition: currentPosition,
@@ -80,6 +85,7 @@ class ProjectMedia extends Component {
             });
         } else if (currentPosition > centerPosition) {
             this.setState({
+                animation: infinite ? 'end_to_end 500ms 1' : 'normal 500ms 1',
                 buttonDisplay: 'none',
                 centerPosition: centerPosition,
                 currentPosition: currentPosition,
@@ -93,7 +99,7 @@ class ProjectMedia extends Component {
     render() {
         return(
             <Measure onMeasure={(dimensions) => this.setCarouselHeight(dimensions)}>
-                <div className="projectMediaContainer" style={{left: this.state.position, zIndex: this.state.zIndex}}>
+                <div className="projectMediaContainer" style={{left: this.state.position, zIndex: this.state.zIndex, animation: this.state.animation}}>
                     <div className="projectSlide" style={{transform: this.state.rotation, width: this.props.slideWidth, height: (this.props.slideWidth * .8), backgroundImage: this.getBackground()}}>
                         <Button bsStyle="success" bsSize="xsmall" className="viewButton" style={{display: this.state.buttonDisplay}} onClick={this.setModalContent}>View Media</Button>
                     </div>

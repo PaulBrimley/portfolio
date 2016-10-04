@@ -23,7 +23,6 @@ module.exports = {
             if (err) {
                 return res.status(500).send(err);
             } else {
-                console.log('result',result);
                 next();
             }
         });
@@ -33,7 +32,6 @@ module.exports = {
             if (findErr) {
                 return res.status(500).send(err);
             } else {
-                console.log(projects);
                 return res.send(projects);
             }
         })
