@@ -98,7 +98,7 @@ class Carousel extends Component {
 
     render() {
         return(
-            <div>
+            <div className="carouselHolder">
                 <div className="projectTitle">
                     {this.props.data.title}
                 </div>

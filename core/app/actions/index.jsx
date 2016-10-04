@@ -6,6 +6,7 @@ export const MOVE_PROJECT_MEDIA = 'MOVE_PROJECT_MEDIA';
 export const SET_PROJECT_DIMENSIONS = 'SET_PROJECT_DIMENSIONS';
 
 export const SET_MEDIA_ADDS_QUANTITY = 'SET_MEDIA_ADDS_QUANTITY';
+export const UPDATE_PROJECT = 'UPDATE_PROJECT';
 export const ADD_PROJECT = 'ADD_PROJECT';
 
 export const SET_MODAL_CONTENT = 'SET_MODAL_CONTENT';
@@ -15,7 +16,6 @@ export const NAME_TEST = 'NAME_TEST';
 const ROOT_URL = window.location.origin;
 
 export function addMediaAdds(quantity) {
-	quantity++;
 	return {
 		type: SET_MEDIA_ADDS_QUANTITY,
 		payload: quantity
@@ -23,6 +23,7 @@ export function addMediaAdds(quantity) {
 }
 
 export function addProject(project) {
+	console.log('addingn project', project);
 	const projectSend = axios.post(`${ROOT_URL}/addProject`, project);
 
 	return {
@@ -74,5 +75,20 @@ export function setProjectDimensions(dimensions) {
 	return {
 		type: SET_PROJECT_DIMENSIONS,
 		payload: dimensions
+	};
+}
+
+export function updateProject(project, projectId) {
+
+	let object = {
+		project: project,
+		_id: projectId
+	};
+
+	const projectSend = axios.post(`${ROOT_URL}/updateProject`, object);
+
+	return {
+		type: UPDATE_PROJECT,
+		payload: projectSend
 	};
 }

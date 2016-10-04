@@ -1,0 +1,33 @@
+.manageProjectPageBody {
+  padding: 10px;
+  width: 90%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background 3s;
+}
+
+.manageProjectMediaRow {
+  position: relative;
+  border-bottom: 1px solid rgba(238, 238, 238, 1);
+  margin-bottom: 5px;
+}
+
+.manageProjectProject {
+  cursor: pointer;
+}
+
+.manageProjectProject:hover {
+  background: #eee;
+}
+
+.manageProjectProjectHeader {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.manageProjectRemoveMediaIcon {
+  position: absolute;
+  right: 0;
+  top: 0;
+}

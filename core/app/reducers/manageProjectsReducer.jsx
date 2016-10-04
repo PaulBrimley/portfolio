@@ -1,4 +1,4 @@
-import { ADD_PROJECT, SET_MEDIA_ADDS_QUANTITY } from '../actions/index';
+import { ADD_PROJECT, SET_MEDIA_ADDS_QUANTITY, UPDATE_PROJECT } from '../actions/index';
 
 export default function(state = {}, action = '') {
     switch(action.type){
@@ -10,6 +10,12 @@ export default function(state = {}, action = '') {
         case(SET_MEDIA_ADDS_QUANTITY):
             return Object.assign({}, state, {
                 mediaAddsQuantity: action.payload
+            });
+            break;
+        case(UPDATE_PROJECT):
+            console.log('UPDATE_PROJECT', action.payload);
+            return Object.assign({}, state, {
+                projectsUpdated: action.payload.data
             });
             break;
         default:

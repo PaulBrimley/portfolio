@@ -2,7 +2,6 @@ var Project = require('../models/projectModel');
 
 module.exports = {
     addProject: function(req, res, next) {
-        console.log(req.body);
         var newProject = new Project();
         newProject.title = req.body.title;
         newProject.description = req.body.description;
@@ -20,7 +19,6 @@ module.exports = {
             }
         }
         newProject.media = mediaArray;
-        console.log(newProject);
         newProject.save(function (err, result) {
             if (err) {
                 return res.status(500).send(err);
@@ -35,8 +33,36 @@ module.exports = {
             if (findErr) {
                 return res.status(500).send(err);
             } else {
+                console.log(projects);
                 return res.send(projects);
             }
+        })
+    },
+    updateProject: function(req, res, next) {
+        Project.findById(req.body._id, function(err, result) {
+            result.title = req.body.project.title;
+            result.description = req.body.project.description;
+            result.url = req.body.project.url;
+            var mediaArray = [];
+            for (var prop in req.body.project) {
+                if (prop.indexOf('mediaTitle') > -1) {
+                    var parsedIndex = prop.split('mediaTitle').splice(1);
+                    mediaArray.push({
+                        mediaDescription: req.body.project['mediaDescription' + parsedIndex],
+                        mediaTitle: req.body.project[prop],
+                        mediaUrl: req.body.project['mediaUrl' + parsedIndex],
+                        mediaVideoLink: req.body.project['mediaVideoLink' + parsedIndex]
+                    })
+                }
+            }
+            result.media = mediaArray;
+            result.save(function (err, saveResult) {
+                if (err) {
+                    return res.status(500).send(false);
+                } else {
+                    return res.send(true);
+                }
+            });
         })
     }
 };

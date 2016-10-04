@@ -6,9 +6,6 @@ html, body {
 }
 
 body {
-  //background-image: url('../images/circuitBoard.jpg');
-  //background-attachment: fixed;
-  //background-size: cover;
   font-family: "Arial Black", Gadget, sans-serif;
 }
 
@@ -44,10 +41,4 @@ body {
 .modal {
   position: absolute;
   left: 6% !important;
-}
-
-@media only screen and (max-width: 900px) {
-  .mainContainer {
-    flex-direction: column;
-  }
 }

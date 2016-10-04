@@ -30,6 +30,7 @@ app.use(passport.session());
 
 app.post('/addProject', projectCtrl.addProject, projectCtrl.getProjects);
 app.get('/getProjects', projectCtrl.getProjects);
+app.post('/updateProject', projectCtrl.updateProject);
 app.post('/testName', function (req, res) {
 	console.log(req.body);
 	if (req.body.name === config.keyCode) {
