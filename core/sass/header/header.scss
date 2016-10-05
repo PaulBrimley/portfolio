@@ -19,6 +19,16 @@
   margin-bottom: 10px;
 }
 
+.headerDividerLine {
+  position: relative;
+}
+
+.headerDividerLine img {
+  position: absolute;
+  left: -2px;
+  width: 100%;
+}
+
 .headerInfo {
   display: flex;
   justify-content: center;
@@ -32,13 +42,39 @@
   text-decoration: underline;
 }
 
+.headerLogo {
+  width: 50px;
+  height: 50px;
+}
+
 .headerTitle {
+  display: flex;
   font-size: 1.5em;
   cursor: default;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2),
+only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait),
+only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape),
+only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2),
+only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait),
+only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape),
+only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2),
+only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait),
+only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape),
+only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3),
+only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait),
+only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape),
+only screen and (max-width: 900px) {
   .header {
     flex-direction: column;
+  }
+
+  .headerTitle {
+    margin-bottom: 20px;
+  }
+
+  .headerLogo {
+    display: none;
   }
 }

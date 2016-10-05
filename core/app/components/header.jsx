@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import Measure from 'react-measure';
 import { Link, browserHistory } from "react-router";
 import { nameTester } from '../actions/index';
 
@@ -10,6 +11,7 @@ class Header extends Component {
         super(props);
         this.state = {
             name: name.split(''),
+            nameDimensions: {},
             nameTest: false
         };
         this.watchLetter = this.watchLetter.bind(this);
@@ -44,6 +46,12 @@ class Header extends Component {
         });
     }
 
+    setNameWidth(dimensions) {
+        this.setState({
+            nameDimensions: dimensions
+        });
+    }
+
     watchLetter(letter) {
         nameTest += letter.toLowerCase();
         if (nameTest.indexOf('yyyy') > -1) {
@@ -61,7 +69,17 @@ class Header extends Component {
         return(
             <div className="header">
                 <div className="headerTitle">
-                    {this.renderName()}
+                    <img className="headerLogo" src="./assets/images/paulLogo.png" alt=""/>
+                    <div>
+                        <Measure onMeasure={(dimensions) => {this.setNameWidth(dimensions);}}>
+                            <div>
+                                {this.renderName()}
+                            </div>
+                        </Measure>
+                        <div className="headerDividerLine" style={{width: this.state.nameDimensions.width}}>
+                            <img src="./assets/images/dividerLine.png" alt=""/>
+                        </div>
+                    </div>
                 </div>
                 <div>
                     <div className="headerInfoTitle">Developer:</div>

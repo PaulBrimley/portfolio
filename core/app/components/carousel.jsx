@@ -102,10 +102,13 @@ class Carousel extends Component {
                 <div className="projectTitle">
                     {this.props.data.title}
                 </div>
-                <div className="carousel" style={{height: this.state.carouselHeight, marginBottom: this.setCarouselMarginBottom()}}>
+                <div className="carousel" style={{height: this.state.carouselHeight}}>
                     {this.renderLeftArrow()}
                     {this.renderProjectMedia()}
                     {this.renderRightArrow()}
+                </div>
+                <div className="projectDescription" style={{marginBottom: this.setCarouselMarginBottom()}}>
+                    {this.props.data.description}
                 </div>
             </div>
 
