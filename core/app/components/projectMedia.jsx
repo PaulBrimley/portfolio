@@ -45,7 +45,6 @@ class ProjectMedia extends Component {
     }
 
     setCarouselHeight(dimensions) {
-        // console.log(dimensions, this.props.dataSet.mediaUrl);
         this.setState({
             dimensions: dimensions
         });
@@ -61,7 +60,6 @@ class ProjectMedia extends Component {
 
     setRotationAndPosition(currentPosition, centerPosition, projectWidth, slideWidth, direction) {
         let infinite = ((direction === 'left' && this.state.currentPosition === 0) || (direction === 'right' && this.state.currentPosition === this.props.projectMediaArrayLength - 1)) ? true : false;
-        console.log(this.props.dataSet.mediaTitle, currentPosition, centerPosition, direction, infinite);
         if (currentPosition === centerPosition) {
             this.setState({
                 animation: 'normal 1s 1',
@@ -74,7 +72,6 @@ class ProjectMedia extends Component {
                 zIndex: 100
             });
         } else if (currentPosition < centerPosition) {
-            console.log(infinite);
             this.setState({
                 animation: infinite ? 'end_to_end 750ms 1' : 'normal 750ms 1',
                 buttonDisplay: 'none',
@@ -85,7 +82,6 @@ class ProjectMedia extends Component {
                 zIndex: (100 - (centerPosition - currentPosition))
             });
         } else if (currentPosition > centerPosition) {
-            console.log(infinite);
             this.setState({
                 animation: infinite ? 'end_to_end 750ms 1' : 'normal 750ms 1',
                 buttonDisplay: 'none',
