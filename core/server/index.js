@@ -27,13 +27,26 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+var linkSet = false;
 
 app.post('/addProject', projectCtrl.addProject, projectCtrl.getProjects);
+app.get('/checkLink', function (req, res) {
+	if (linkSet) {
+		res.send(true);
+	} else {
+		res.send(false);
+	}
+});
+app.get('/clearLink', function (req, res) {
+	linkSet = false;
+	res.send(false);
+});
 app.get('/getProjects', projectCtrl.getProjects);
 app.post('/updateProject', projectCtrl.updateProject);
 app.post('/testName', function (req, res) {
 	console.log(req.body);
 	if (req.body.name === config.keyCode) {
+		linkSet = true;
 		return res.send(true);
 	} else {
 		return res.send(false);

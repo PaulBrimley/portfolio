@@ -8,6 +8,8 @@ export const SET_PROJECT_DIMENSIONS = 'SET_PROJECT_DIMENSIONS';
 export const SET_MEDIA_ADDS_QUANTITY = 'SET_MEDIA_ADDS_QUANTITY';
 export const UPDATE_PROJECT = 'UPDATE_PROJECT';
 export const ADD_PROJECT = 'ADD_PROJECT';
+export const CLEAR_LINK = 'CLEAR_LINK';
+export const CHECK_LINK_SET = 'CHECK_LINK_SET';
 
 export const SET_MODAL_CONTENT = 'SET_MODAL_CONTENT';
 
@@ -23,11 +25,25 @@ export function addMediaAdds(quantity) {
 }
 
 export function addProject(project) {
-	console.log('addingn project', project);
 	const projectSend = axios.post(`${ROOT_URL}/addProject`, project);
-
 	return {
 		type: ADD_PROJECT,
+		payload: projectSend
+	};
+}
+
+export function checkLinkSet() {
+	const projectSend = axios.get(`${ROOT_URL}/checkLink`);
+	return {
+		type: CLEAR_LINK,
+		payload: projectSend
+	};
+}
+
+export function clearLink() {
+	const projectSend = axios.get(`${ROOT_URL}/clearLink`);
+	return {
+		type: CLEAR_LINK,
 		payload: projectSend
 	};
 }
@@ -49,7 +65,6 @@ export function moveProjectMedia(projectId, direction) {
 
 export function nameTester(name) {
 	const nameTest = axios.post(`${ROOT_URL}/testName`, {name});
-
 	return {
 		type: NAME_TEST,
 		payload: nameTest
@@ -57,7 +72,6 @@ export function nameTester(name) {
 }
 
 export function setCarouselHeight(projectId, dimensions) {
-	// console.log(projectId, dimensions);
 	return {
 		type: SET_CAROUSEL_HEIGHT,
 		payload: {projectId, dimensions}
@@ -79,14 +93,11 @@ export function setProjectDimensions(dimensions) {
 }
 
 export function updateProject(project, projectId) {
-
 	let object = {
 		project: project,
 		_id: projectId
 	};
-
 	const projectSend = axios.post(`${ROOT_URL}/updateProject`, object);
-
 	return {
 		type: UPDATE_PROJECT,
 		payload: projectSend

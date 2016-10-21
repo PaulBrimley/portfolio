@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from "react";
-import { Link } from "react-router";
+import { Link, browserHistory } from "react-router";
 import { connect } from "react-redux";
-import { addMediaAdds, addProject, getData, updateProject } from '../actions/index';
+import { addMediaAdds, addProject, checkLinkSet, getData, updateProject } from '../actions/index';
 import { Button, ControlLabel, Form, FormGroup, FormControl, Grid, Row, Col } from 'react-bootstrap';
 
 class ManageProjects extends Component {
@@ -29,6 +29,11 @@ class ManageProjects extends Component {
     componentWillMount() {
         this.addMediaAdds(this.state.mediaAdds);
         this.props.getData('/getProjects');
+        this.props.checkLinkSet().then(function (response) {
+            if (!response.payload.data) {
+                browserHistory.push('/');
+            }
+        });
     }
 
     componentWillReceiveProps(props) {
@@ -323,4 +328,4 @@ function mapStateToProps(state) {
         projectUpdated: state.manageProjects.projectUpdated
     };
 }
-export default connect(mapStateToProps, { addMediaAdds, addProject, getData, updateProject })(ManageProjects);
+export default connect(mapStateToProps, { addMediaAdds, addProject, checkLinkSet, getData, updateProject })(ManageProjects);
