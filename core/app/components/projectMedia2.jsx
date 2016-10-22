@@ -30,7 +30,7 @@ class ProjectMedia extends Component {
 
     getHeight() {
         if (this.props.index === this.props.activeSlide) {
-            return '60%';
+            return '80%';
         } else if (this.props.projectMediaArrayLength > 1) {
             return '30%';
         }
@@ -38,7 +38,7 @@ class ProjectMedia extends Component {
 
     getTransform() {
         if (this.props.index === this.props.activeSlide) {
-            return 'rotateY( ' + (this.props.projectMediaRotation * this.props.index) + 'deg ) translateX( -80% )';
+            return 'rotateY( ' + (this.props.projectMediaRotation * this.props.index) + 'deg ) translateX( -55% ) translateY(-20%)';
         } else if (this.props.projectMediaArrayLength > 1) {
             return 'rotateY( ' + (this.props.projectMediaRotation * this.props.index) + 'deg ) translateX( -5px )';
         }
@@ -46,7 +46,7 @@ class ProjectMedia extends Component {
 
     getWidth() {
         if (this.props.index === this.props.activeSlide) {
-            return '130%';
+            return '140%';
         } else if (this.props.projectMediaArrayLength > 1) {
             return '70%';
         }
