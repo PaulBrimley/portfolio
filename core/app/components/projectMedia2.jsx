@@ -46,7 +46,7 @@ class ProjectMedia extends Component {
 
     getWidth() {
         if (this.props.index === this.props.activeSlide) {
-            return '120%';
+            return '130%';
         } else if (this.props.projectMediaArrayLength > 1) {
             return '70%';
         }
