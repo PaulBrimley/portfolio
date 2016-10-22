@@ -30,7 +30,7 @@ class ProjectMedia extends Component {
 
     getTransform() {
         if (this.props.index === this.props.activeSlide) {
-            return 'rotateY( ' + (this.props.projectMediaRotation * this.props.index) + 'deg ) translateX( -110% ) scale(2, 2)';
+            return 'rotateY( ' + (this.props.projectMediaRotation * this.props.index) + 'deg ) translateX( -110% ) scale3d(2, 2, 1)';
         } else if (this.props.projectMediaArrayLength > 1) {
             return 'rotateY( ' + (this.props.projectMediaRotation * this.props.index) + 'deg ) translateX( -5px )';
         }
