@@ -115,8 +115,8 @@ class MainView extends Component {
     renderModalVideo() {
         if (this.state.modalContent.hasOwnProperty('content') && this.state.modalContent.content.mediaVideoLink) {
             return (
-                <div class="videoWrapper">
-                    <iframe width="560" height="349" src={ this.state.modalContent.content.mediaVideoLink} frameborder="0" allowfullscreen></iframe>
+                <div className="videoWrapper">
+                    <iframe width="560" height="349" src={ this.state.modalContent.content.mediaVideoLink} frameBorder="0" allowFullScreen></iframe>
                 </div>
             );
         }
