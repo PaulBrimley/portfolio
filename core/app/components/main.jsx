@@ -6,7 +6,7 @@ import Measure from 'react-measure';
 import Carousel from './carousel';
 import Carousel2 from './carousel2';
 import { Modal, OverlayTrigger, Popover, Tooltip, Button } from 'react-bootstrap';
-
+import ReactPlayer from 'react-player';
 import { browserHistory } from 'react-router';
 
 import { clearLink, getData, setProjectDimensions, setModalContent } from "../actions/index";
@@ -116,7 +116,7 @@ class MainView extends Component {
         if (this.state.modalContent.hasOwnProperty('content') && this.state.modalContent.content.mediaVideoLink) {
             return (
                 <div className="videoWrapper">
-                    <iframe width="560" height="349" src={ this.state.modalContent.content.mediaVideoLink} frameBorder="0" allowFullScreen></iframe>
+                    <ReactPlayer width="100%" height="100%" url='https://s3-us-west-2.amazonaws.com/paulbrimleyportfolio/FoodTruck+Administrator+720.mov' playing={this.state.playVideo} controls={true} style={{position: 'absolute', top: 0, left: 0}}/>
                 </div>
             );
         }

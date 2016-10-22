@@ -28,11 +28,27 @@ class ProjectMedia extends Component {
         return 'url(' + this.props.dataSet.mediaUrl + ')';
     }
 
+    getHeight() {
+        if (this.props.index === this.props.activeSlide) {
+            return '60%';
+        } else if (this.props.projectMediaArrayLength > 1) {
+            return '30%';
+        }
+    }
+
     getTransform() {
         if (this.props.index === this.props.activeSlide) {
-            return 'rotateY( ' + (this.props.projectMediaRotation * this.props.index) + 'deg ) translateX( -110% ) scale3d(2, 2, 1)';
+            return 'rotateY( ' + (this.props.projectMediaRotation * this.props.index) + 'deg ) translateX( -80% )';
         } else if (this.props.projectMediaArrayLength > 1) {
             return 'rotateY( ' + (this.props.projectMediaRotation * this.props.index) + 'deg ) translateX( -5px )';
+        }
+    }
+
+    getWidth() {
+        if (this.props.index === this.props.activeSlide) {
+            return '120%';
+        } else if (this.props.projectMediaArrayLength > 1) {
+            return '70%';
         }
     }
 
@@ -46,7 +62,7 @@ class ProjectMedia extends Component {
 
     render() {
         return(
-            <figure className="projectSlide2" style={{transform: this.getTransform(), background: this.getBackground(), backgroundSize: 'cover'}}>
+            <figure className="projectSlide2" style={{transform: this.getTransform(), background: this.getBackground(), backgroundSize: 'cover', width: this.getWidth(), height: this.getHeight()}}>
                 <div className="buttonHolder">
                     <Button bsStyle="success" bsSize="xsmall" className="viewButton2" style={{display: this.displayButton()}} onClick={this.setModalContent}>View Media</Button>
                 </div>
