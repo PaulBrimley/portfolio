@@ -109,10 +109,10 @@ class Carousel extends Component {
                         <div className="carouselContainerInsideInside" style={{transform: ('rotateY(' + this.state.currentCarouselRotation + 'deg)')}}>
                             {this.renderProjectMedia()}
                         </div>
-                        <div className="carouselNavs">
-                            {this.renderLeftArrow()}
-                            {this.renderRightArrow()}
-                        </div>
+                    </div>
+                    <div className="carouselNavs">
+                        {this.renderLeftArrow()}
+                        {this.renderRightArrow()}
                     </div>
 
                 </div>

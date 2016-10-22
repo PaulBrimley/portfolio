@@ -7,17 +7,15 @@
 }
 
 .carousel2 {
-  display: flex;
-  align-items: center;
+  position: relative;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.7);
 }
 
 .carouselContainerInside {
   width: 30%;
-  height: 300px;
+  height: 250px;
   position: relative;
-  top: 20%;
   left: 50%;
   perspective: 2000px;
   perspective-origin: 0 0;
@@ -38,8 +36,8 @@
   margin: 0;
   display: block;
   position: absolute;
-  width: 80%;
-  height: 29%;
+  width: 70%;
+  height: 30%;
   right: 50%;
   top: 10px;
   transform-origin: 100% 0;
@@ -55,10 +53,10 @@
 }
 
 .carouselNavs {
-  width: 100%;
+  width: 30%;
   position: absolute;
-  bottom: 0;
-  left: 20%;
+  bottom: 40px;
+  right: 15%;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -128,7 +126,7 @@
   opacity: 0;
   z-index: 9999;
   margin: 0 auto;
-  transform: scale(.75, .75);
+  transform: scale(.5, .5);
 }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2),
