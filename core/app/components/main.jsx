@@ -112,6 +112,16 @@ class MainView extends Component {
         }
     }
 
+    renderModalVideo() {
+        if (this.state.modalContent.hasOwnProperty('content') && this.state.modalContent.content.mediaVideoLink) {
+            return (
+                <div class="videoWrapper">
+                    <iframe width="560" height="349" src={ this.state.modalContent.content.mediaVideoLink} frameborder="0" allowfullscreen></iframe>
+                </div>
+            );
+        }
+    }
+
     /*renderProjects() {
         let dataLength = this.state.data.length - 1;
         return this.state.data.map(function (project, index) {
@@ -155,6 +165,7 @@ class MainView extends Component {
                                 </Modal.Title>
                             </Modal.Header>
                             <Modal.Body>
+                                {this.renderModalVideo()}
                                 {this.renderModalMedia()}
                                 {this.renderModalMediaDescription()}
                             </Modal.Body>
