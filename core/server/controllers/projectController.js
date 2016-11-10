@@ -28,18 +28,6 @@ module.exports = {
             }
         });
     },
-    populateData: function(data) {
-        var dfd = q.defer();
-        var newProject = new Project(data);
-        newProject.save(function (err, response) {
-            if (err) {
-                dfd.reject(false);
-            } else {
-                dfd.resolve(true);
-            }
-        });
-        return dfd.promise;
-    },
     getProjects: function(req, res, next) {
         Project.find(function (findErr, projects) {
             if (findErr) {
