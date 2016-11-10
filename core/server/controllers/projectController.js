@@ -1,4 +1,5 @@
 var Project = require('../models/projectModel');
+var q = require('q');
 
 module.exports = {
     addProject: function(req, res, next) {

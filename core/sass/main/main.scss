@@ -31,6 +31,11 @@ body {
   justify-content: center;
 }
 
+.modal {
+  position: absolute;
+  left: 6% !important;
+}
+
 .pageBody {
   position: relative;
   padding: 10px;
@@ -57,10 +62,22 @@ body {
   z-index: -1;
 }
 
-.modal {
-  position: absolute;
-  left: 6% !important;
+.videoWrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  padding-top: 25px;
+  height: 350px;
+  margin-bottom: 10px;
 }
+/*
+.videoWrapper div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px solid blue;
+}*/
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2),
   only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait),

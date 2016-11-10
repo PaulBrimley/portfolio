@@ -1,0 +1,149 @@
+.buttonHolder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.carousel2 {
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.carouselContainerInside {
+  width: 30%;
+  height: 250px;
+  position: relative;
+  left: 55%;
+  perspective: 2000px;
+  perspective-origin: 0 0;
+  transform-style: preserve-3d;
+  transform: rotateX(-5deg);
+}
+
+.carouselContainerInsideInside {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 20%;
+  transform-style: preserve-3d;
+  transition: .5s;
+}
+
+.carouselContainerInsideInside figure {
+  margin: 0;
+  display: block;
+  position: absolute;
+  /*width: 70%;
+  height: 30%;*/
+  right: 50%;
+  top: 10px;
+  transform-origin: 100% 0;
+  transition: .5s;
+}
+
+.carouselContainerInsideInside figure:hover .viewButton2 {
+  opacity: 1;
+}
+
+.carouselHolder2:hover .carousel2, .carouselHolder2:hover .projectTitle2, .carouselHolder2:hover .projectDescription2 {
+  background: rgba(255, 255, 255, 1);
+}
+
+.carouselNavs {
+  width: 30%;
+  position: absolute;
+  bottom: 40px;
+  right: 15%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.leftArrow2 {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 20px;
+}
+
+.leftArrow2:hover i {
+  color: #ddd;
+}
+
+.leftArrow2 i {
+  cursor: pointer;
+}
+
+.projectDescription2 {
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.projectMedia2 {
+  width: 100%;
+}
+
+.projectMediaContainer2 {
+  //position: absolute;
+  transition: 1s;
+  perspective: 200px;
+}
+
+.projectSlide2 {
+  background-size: cover;
+  background-position: center;
+  transition: 1s;
+  transform-style: preserve-3d;
+}
+
+.projectTitle2 {
+  text-align: center;
+  text-decoration: underline;
+  font-size: 1.4em;
+  padding: 5px 0;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.rightArrow2 {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 20px;
+}
+
+.rightArrow2:hover i {
+  color: #ddd;
+}
+
+.rightArrow2 i {
+  cursor: pointer;
+}
+
+.viewButton2 {
+  opacity: 0;
+  z-index: 9999;
+  margin: 0 auto;
+  //transform: scale3d(.5, .5, 1);
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2),
+only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait),
+only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape),
+only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2),
+only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait),
+only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape),
+only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2),
+only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait),
+only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape),
+only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3),
+only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait),
+only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape),
+only screen and (max-width: 900px) {
+  .carouselContainer2 {
+    margin: 0;
+  }
+}
+

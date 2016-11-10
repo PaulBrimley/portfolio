@@ -4,11 +4,12 @@ import Header from './header';
 import ProfileInfo from './profileInformation';
 import Measure from 'react-measure';
 import Carousel from './carousel';
+import Carousel2 from './carousel2';
 import { Modal, OverlayTrigger, Popover, Tooltip, Button } from 'react-bootstrap';
-
+import ReactPlayer from 'react-player';
 import { browserHistory } from 'react-router';
 
-import { getData, setProjectDimensions, setModalContent } from "../actions/index";
+import { clearLink, getData, setProjectDimensions, setModalContent } from "../actions/index";
 
 class MainView extends Component {
     constructor(props) {
@@ -41,6 +42,7 @@ class MainView extends Component {
         this.forceUpdate();
         this.props.getData('/getProjects');
         this.setBackgroundState();
+        this.props.clearLink();
     }
 
     checkForDataAndRender() {
@@ -72,13 +74,6 @@ class MainView extends Component {
         setInterval(function () {
             setBackgroundState();
         }, 20000);
-    }
-
-    setBackgroundState() {
-        let index = Math.floor(Math.random() * (this.state.backgrounds.length - 1));
-        this.setState({
-            background: this.state.backgrounds[index]
-        });
     }
 
     renderModalMedia() {
@@ -117,12 +112,38 @@ class MainView extends Component {
         }
     }
 
-    renderProjects() {
+    renderModalVideo() {
+        if (this.state.modalContent.hasOwnProperty('content') && this.state.modalContent.content.mediaVideoLink) {
+            return (
+                <div className="videoWrapper">
+                    <ReactPlayer width="100%" height="100%" url={this.state.modalContent.content.mediaVideoLink} playing={this.state.playVideo} controls={true} style={{position: 'absolute', top: 0, left: 0}}/>
+                </div>
+            );
+        }
+    }
+
+    /*renderProjects() {
         let dataLength = this.state.data.length - 1;
         return this.state.data.map(function (project, index) {
             return (
                 <Carousel key={index} data={project} dataLength={dataLength} index={index}/>
             );
+        });
+    }*/
+
+    renderProjects() {
+        let dataLength = this.state.data.length - 1;
+        return this.state.data.map(function (project, index) {
+            return (
+                <Carousel2 key={index} data={project} dataLength={dataLength} index={index}/>
+            );
+        });
+    }
+
+    setBackgroundState() {
+        let index = Math.floor(Math.random() * (this.state.backgrounds.length - 1));
+        this.setState({
+            background: this.state.backgrounds[index]
         });
     }
 
@@ -144,6 +165,7 @@ class MainView extends Component {
                                 </Modal.Title>
                             </Modal.Header>
                             <Modal.Body>
+                                {this.renderModalVideo()}
                                 {this.renderModalMedia()}
                                 {this.renderModalMediaDescription()}
                             </Modal.Body>
@@ -174,4 +196,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps, { getData, setProjectDimensions, setModalContent })(MainView);
+export default connect(mapStateToProps, { clearLink, getData, setProjectDimensions, setModalContent })(MainView);
