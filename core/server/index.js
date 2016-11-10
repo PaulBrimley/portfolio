@@ -5,13 +5,15 @@ var express = require('express'),
 	mongoose = require('mongoose'),
 	session = require('express-session'),
 	passport = require('passport'),
-	path = require("path");
+	path = require("path"),
+	request = require('request'),
+	http = require('http'),
 	local = require('passport-local');
 
 var	projectCtrl = require('./controllers/projectController');
 
 var app = express();
-var server = require("http").Server(app);
+var server = http.Server(app);
 var io = require("socket.io")(server);
 app.use(express.static(__dirname + './../../public'));
 app.use(bodyParser.json());
@@ -52,6 +54,26 @@ app.post('/testName', function (req, res) {
 		return res.send(false);
 	}
 });
+
+
+app.get('/getProjectsFromServer', function(req, res, next) {
+	console.log('getting all projects');
+	request.get('http://www.paulbrimleywebdev.com/getProjects', function(err, res, body) {
+		console.log('err', err);
+		console.log('res', res);
+		console.log('body', body);
+		if (body) {
+			var data = JSON.parse(body);
+			data.map(function (proj) {
+				projectCtrl.populateData(proj).then(function (response) {
+					console.log(response);
+				});
+			});
+		}
+	});
+});
+
+
 
 app.get(/^(?!.*(images))/, function (req, res) {
 	res.sendFile(path.resolve(__dirname + './../../public/index.html'));

@@ -1,4 +1,5 @@
 var Project = require('../models/projectModel');
+var q = require('q');
 
 module.exports = {
     addProject: function(req, res, next) {
@@ -26,6 +27,18 @@ module.exports = {
                 next();
             }
         });
+    },
+    populateData: function(data) {
+        var dfd = q.defer();
+        var newProject = new Project(data);
+        newProject.save(function (err, response) {
+            if (err) {
+                dfd.reject(false);
+            } else {
+                dfd.resolve(true);
+            }
+        });
+        return dfd.promise;
     },
     getProjects: function(req, res, next) {
         Project.find(function (findErr, projects) {

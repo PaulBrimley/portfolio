@@ -48,6 +48,15 @@ export function clearLink() {
 	};
 }
 
+export function getAllData() {
+	const projectSend = axios.get(`${ROOT_URL}/getProjectsFromServer`);
+
+	return {
+		type: CLEAR_LINK,
+		payload: false
+	};
+}
+
 export function getData(url) {
 	const request = axios.get(ROOT_URL + url);
 	return {
