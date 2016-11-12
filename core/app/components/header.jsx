@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Measure from 'react-measure';
 import { Link, browserHistory } from "react-router";
-import { getAllData, nameTester } from '../actions/index';
+import { nameTester } from '../actions/index';
 
 let name = 'Paul Brimley';
 let nameTest = '';
@@ -69,7 +69,7 @@ class Header extends Component {
         return(
             <div className="header">
                 <div className="headerTitle">
-                    <img onClick={() => this.props.getAllData()} className="headerLogo" src="./assets/images/paulLogo.png" alt=""/>
+                    <img className="headerLogo" src="./assets/images/paulLogo.png" alt=""/>
                     <div>
                         <Measure onMeasure={(dimensions) => {this.setNameWidth(dimensions);}}>
                             <div>
@@ -98,4 +98,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps, { getAllData, nameTester })(Header);
+export default connect(mapStateToProps, { nameTester })(Header);
